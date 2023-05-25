@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<TriggernometryExport Version="1">
+  <ExportedFolder FFXIVZoneFilterEnabled="True" FfxivZoneFilterRegularExpression="^295$" Id="bcc6ac99-a647-4b3e-8228-5dd21a06b84f" Name="极伊弗利特_FFD by西瓜" Enabled="true">
+    <Folders />
+    <Triggers>
+      <Trigger Enabled="true" Sequential="True" Name="地火喷发" Id="3316a049-5bf6-4cf7-9a41-639c46a32a03" RegularExpression="^.{14} ChatLog 00:0:104:(?&lt;sid&gt;.*?):(?&lt;sname&gt;.*?):068D:(?&lt;what&gt;.*?):(?&lt;casttime&gt;.*?):(?&lt;tid&gt;.*?):(?&lt;tname&gt;.*?):(?&lt;what2&gt;.*?):(?&lt;heading&gt;.*?):(?&lt;x&gt;.*?):(?&lt;y&gt;.*?):(?&lt;z&gt;.*?):">
+        <Actions>
+          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:8001/rpc" JsonPayloadExpression="{&quot;cmd&quot;:&quot;add_omen&quot;,&quot;color&quot;:&quot;enemy&quot;,&quot;shape_scale&quot;:{&quot;key&quot;:&quot;circle&quot;,&quot;range&quot;:8},&quot;pos&quot;:[${x},0,${y}],&quot;duration&quot;:4}" ActionType="GenericJson">
+            <Condition Enabled="false" Grouping="And" />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+      <Trigger Enabled="true" Sequential="True" Name="热风" Id="7f82f604-de82-4a4d-aa02-fd6864e37749" RegularExpression="^.{14} (?:\w+ )1A:178:[^:]*:(?&lt;sc&gt;(20.00|20.00)):.{8}:[^:]*:(?&lt;id&gt;.{8}):[^:]*">
+        <Actions>
+          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:8001/rpc" JsonPayloadExpression="{&quot;cmd&quot;:&quot;add_omen&quot;,&quot;color&quot;:&quot;enemy&quot;,&quot;shape_scale&quot;:{&quot;key&quot;:&quot;circle&quot;,&quot;range&quot;:15},&quot;pos&quot;:{&quot;key&quot;:&quot;actor_pos&quot;,&quot;id&quot;: ${numeric:hex2dec(${id})}},&quot;duration&quot;:20,&quot;label&quot;: &quot;!热风!&quot;,&quot;label_at&quot;: 3}" ActionType="GenericJson">
+            <Condition Enabled="false" Grouping="And" />
+          </Action>
+          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:8001/rpc" JsonPayloadExpression="{&quot;cmd&quot;:&quot;add_omen&quot;,&quot;color&quot;:&quot;enemy&quot;,&quot;shape_scale&quot;:{&quot;key&quot;:&quot;circle&quot;,&quot;range&quot;:15},&quot;pos&quot;:{&quot;key&quot;:&quot;actor_pos&quot;,&quot;id&quot;: ${numeric:hex2dec(${id})}},&quot;duration&quot;:20,&quot;label&quot;: &quot;!热风!&quot;,&quot;label_at&quot;: 3}" ActionType="GenericJson">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+      <Trigger Enabled="true" Sequential="True" Name="光辉炎柱" Id="db0fbc21-f19e-4dc9-b670-b1498a7841b8" RegularExpression="^.{14} ChatLog 00:0:104:(?&lt;sid&gt;.*?):(?&lt;sname&gt;.*?):054F:(?&lt;what&gt;.*?):(?&lt;casttime&gt;.*?):(?&lt;tid&gt;.*?):(?&lt;tname&gt;.*?):(?&lt;what2&gt;.*?):(?&lt;heading&gt;.*?):(?&lt;x&gt;.*?):(?&lt;y&gt;.*?):(?&lt;z&gt;.*?):">
+        <Actions>
+          <Action OrderNumber="1" JsonEndpointExpression="http://127.0.0.1:8001/rpc" JsonPayloadExpression="{&quot;cmd&quot;:&quot;add_omen&quot;,&quot;color&quot;:&quot;enemy&quot;,&quot;shape_scale&quot;:{&quot;key&quot;:&quot;circle&quot;,&quot;range&quot;:8},&quot;pos&quot;:[${x},0,${y}],&quot;duration&quot;:6}" ActionType="GenericJson">
+            <Condition Enabled="false" Grouping="And" />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+      <Trigger Enabled="true" Name="三连喷 烈焰焚烧" Id="bfb73ad0-679c-4976-bcfe-a74b932ada72" RegularExpression="^.{14} (?:\w+ )15:(?&lt;id&gt;.{8}):[^:]*:5F8:">
+        <Actions>
+          <Action OrderNumber="1" NamedCallbackName="command" NamedCallbackParam="/e 检测到三连喷" Enabled="False" ActionType="NamedCallback">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="2" JsonEndpointExpression="http://127.0.0.1:8001/rpc" JsonPayloadExpression="{&quot;cmd&quot;:&quot;add_omen&quot;,&quot;color&quot;: &quot;enemy&quot;, &quot;shape_scale&quot;:{&quot;key&quot;:&quot;fan&quot;,&quot;deg&quot;:100,&quot;range&quot;:16}, &quot;pos&quot;:{&quot;key&quot;:&quot;actor_pos&quot;,&quot;id&quot;:${numeric:hex2dec(${id})}},&quot;facing&quot;:{&quot;key&quot;:&quot;actor_facing&quot;,&quot;id&quot;:${numeric:hex2dec(${id})}},&quot;duration&quot;:3}" ActionType="GenericJson">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+      <Trigger Enabled="true" Name="获取火神id" Id="0aca4481-5ae6-4d5a-98ed-b424e1177808" RegularExpression="^.{14} (?:\w+ )15:.{8}:[^:]*:[^:]*:[^:]*:(?&lt;id&gt;.{8}):伊弗利特" PeriodRefire="Deny" RefirePeriodExpression="100000">
+        <Actions>
+          <Action OrderNumber="1" VariableOp="SetString" VariableName="火神id" VariableExpression="${numeric:hex2dec(${id})}" ActionType="Variable">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+          <Action OrderNumber="2" NamedCallbackName="command" NamedCallbackParam="/e ${numeric:hex2dec(${id})},${id}" Enabled="False" ActionType="NamedCallback">
+            <Condition Enabled="false" Grouping="Or" />
+          </Action>
+        </Actions>
+        <Condition Enabled="false" Grouping="Or" />
+      </Trigger>
+    </Triggers>
+  </ExportedFolder>
+</TriggernometryExport>
