@@ -1,2 +1,2 @@
-# -FFD_xigua
-基于FFD的一款
+用于FFD：https://github.com/nyaoouo/FFDraw
+使用Triggernometry
